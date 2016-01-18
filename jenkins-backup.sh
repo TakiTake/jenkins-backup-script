@@ -43,7 +43,8 @@ if [ -d "$JENKINS_HOME/jobs/" ] ; then
   cd "$JENKINS_HOME/jobs/"
   ls -1 | while read job_name ; do
     mkdir -p "$ARC_DIR/jobs/$job_name/"
-    ls -1 "$JENKINS_HOME/jobs/$job_name/" | grep -v workspace | xargs -I {} cp -r {} "$ARC_DIR/jobs/$job_name/"
+    cd "$JENKINS_HOME/jobs/$job_name/"
+    ls -1 | grep -v workspace | xargs -I {} cp -r {} "$ARC_DIR/jobs/$job_name/"
   done
 fi
 
