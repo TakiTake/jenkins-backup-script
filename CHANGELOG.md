@@ -1,6 +1,11 @@
 # Changelog
 ## master
-[full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.1...master)
+[full changelog](https://github.com/TakiTake/jenkins-backup-script/compare/0.2.0...master)
+
+## 0.2.0
+[full changelog](https://github.com/TakiTake/jenkins-backup-script/compare/0.1.1...0.2.0)
+
+* backup also build history
 
 ## 0.1.1
 [full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.0...0.1.1)
