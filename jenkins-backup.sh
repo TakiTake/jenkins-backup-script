@@ -20,7 +20,7 @@ if [ -z "$JENKINS_HOME" -o -z "$DEST_FILE" ] ; then
 fi
 
 rm -rf "$ARC_DIR" "$TMP_TAR_NAME"
-mkdir -p "$ARC_DIR/"{plugins,jobs,users,secrets}
+mkdir -p "$ARC_DIR/"{plugins,jobs,users,secrets,nodes}
 
 cp "$JENKINS_HOME/"*.xml "$ARC_DIR"
 
@@ -31,25 +31,31 @@ if [ $hpi_pinned_count -ne 0 -o $jpi_pinned_count -ne 0 ]; then
   cp "$JENKINS_HOME/plugins/"*.[hj]pi.pinned "$ARC_DIR/plugins"
 fi
 
-if [ -d "$JENKINS_HOME/users/" ] ; then
+if [ "$(ls -A $JENKINS_HOME/users/)" ]; then
   cp -R "$JENKINS_HOME/users/"* "$ARC_DIR/users"
 fi
 
-if [ -d "$JENKINS_HOME/secrets/" ] ; then
+if [ "$(ls -A $JENKINS_HOME/secrets/)" ] ; then
   cp -R "$JENKINS_HOME/secrets/"* "$ARC_DIR/secrets"
 fi
 
-if [ -d "$JENKINS_HOME/jobs/" ] ; then
+if [ "$(ls -A $JENKINS_HOME/nodes/)" ] ; then
+  cp -R "$JENKINS_HOME/nodes/"* "$ARC_DIR/nodes"
+fi
+
+if [ "$(ls -A $JENKINS_HOME/jobs/)" ] ; then
   cd "$JENKINS_HOME/jobs/"
   ls -1 | while read job_name ; do
     mkdir -p "$ARC_DIR/jobs/$job_name/"
     cd "$JENKINS_HOME/jobs/$job_name/"
     ls -1 | grep -v workspace | xargs -I {} cp -r {} "$ARC_DIR/jobs/$job_name/"
   done
+  cd -
 fi
 
 cd "$TMP_DIR"
 tar -czvf "$TMP_TAR_NAME" "$ARC_NAME/"*
+cd -
 mv -f "$TMP_TAR_NAME" "$DEST_FILE"
 rm -rf "$ARC_DIR"
 

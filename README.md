@@ -5,8 +5,9 @@
 Archive Jenkins settings and plugins
 
 * `$JENKINS_HOME/*.xml`
-* `$JENKINS_HOME/plugins/*.jpi`
 * `$JENKINS_HOME/jobs/*/*.xml`
+* `$JENKINS_HOME/nodes/*`
+* `$JENKINS_HOME/plugins/*.jpi`
 * `$JENKINS_HOME/users/*`
 
 # Usage
@@ -31,7 +32,7 @@ https://github.com/sue445/jenkins-backup-script.git
 ```
 
 * **Recommended** : specify Branch Specifier with latest release tag
-* latest tag is `0.1.1`
+* Check https://github.com/sue445/jenkins-backup-script/releases
 
 ![0.0.3](http://f.st-hatena.com/images/fotolife/s/sue445/20140331/20140331010645.png)
 

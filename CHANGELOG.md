@@ -7,6 +7,28 @@
 
 * backup also build history
 
+[full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.4...master)
+
+## 0.1.4
+[full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.3...0.1.4)
+
+* Fix error when nodes dir is empty
+  * https://github.com/sue445/jenkins-backup-script/issues/37
+  * https://github.com/sue445/jenkins-backup-script/pull/38
+
+## 0.1.3
+[full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.2...0.1.3)
+
+* added nodes to archive
+  * https://github.com/sue445/jenkins-backup-script/pull/34
+
+## 0.1.2
+[full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.1...0.1.2)
+
+* support relative path for `DEST_FILE` (thx @namikawa)
+  * https://github.com/sue445/jenkins-backup-script/pull/31
+  * https://github.com/sue445/jenkins-backup-script/pull/32
+
 ## 0.1.1
 [full changelog](https://github.com/sue445/jenkins-backup-script/compare/0.1.0...0.1.1)
 
