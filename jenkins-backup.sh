@@ -48,7 +48,12 @@ if [ "$(ls -A $JENKINS_HOME/jobs/)" ] ; then
   ls -1 | while read job_name ; do
     mkdir -p "$ARC_DIR/jobs/$job_name/"
     cd "$JENKINS_HOME/jobs/$job_name/"
-    ls -1 | grep -v workspace | xargs -I {} cp -r {} "$ARC_DIR/jobs/$job_name/"
+
+    # Backup job history and some settings
+    ls -1 | grep -v -E '(workspace|config\.xml)' | xargs -I {} cp -r {} "$ARC_DIR/jobs/$job_name/"
+
+    # Backup job configuration
+    cp config.xml "$SERVICE_DIR/chef/site-cookbooks/${SERVICE_NAME}/files/jenkins_jobs/${job_name}.xml"
   done
   cd -
 fi
