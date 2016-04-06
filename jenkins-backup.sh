@@ -53,7 +53,9 @@ if [ "$(ls -A $JENKINS_HOME/jobs/)" ] ; then
     ls -1 | grep -v -E '(workspace|config\.xml)' | xargs -I {} cp -r {} "$ARC_DIR/jobs/$job_name/"
 
     # Backup job configuration
-    cp config.xml "$SERVICE_DIR/chef/site-cookbooks/${SERVICE_NAME}/files/jenkins_jobs/${job_name}.xml"
+    readonly SERVICE_JOBS_DIR="$SERVICE_DIR/chef/site-cookbooks/${SERVICE_NAME}/files/jenkins_jobs"
+    mkdir -p $SERVICE_JOBS_DIR
+    cp config.xml "$SERVICE_JOBS_DIR/${job_name}.xml"
   done
   cd -
 fi
